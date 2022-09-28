@@ -12,6 +12,11 @@ public class IOCDemoConfiguration {
     }
 
     @Bean
+    public KyleGreetingProvider kyleProvider(){
+        return new KyleGreetingProvider();
+    }
+
+    @Bean
     public GreetingRenderer renderer() {
         GreetingRenderer renderer =
                 new StandardOutGreetingRenderer();
