@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Laptop {
     private Processor processor;
     private OS os;
+    private Battery battery;
 
     @Autowired
     public void setProcessor(Processor processor) {
@@ -18,8 +19,17 @@ public class Laptop {
         this.os = os;
     }
 
+    @Autowired
+    public void setBattery(Battery battery){
+        this.battery = battery;
+    }
+
+
     public String printLaptopConfiguration() {
         return "processor: " + processor.getCore() + " core " + processor.getName() +
-                "\nOS: " + os.getName();
+                "\nOS: " + os.getName() +
+                "\nBattery Level: " + battery.getLevel();
     }
+
+
 }
