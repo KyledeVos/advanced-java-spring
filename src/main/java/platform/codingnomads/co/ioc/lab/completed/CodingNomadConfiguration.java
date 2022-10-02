@@ -24,12 +24,13 @@ public class CodingNomadConfiguration {
     }
 
     @Bean
-    public OperatingSystem operatingSystem() {
-        return OperatingSystem.builder().name("macOS").version("11.4").build();
+    public Whiteboard whiteboard(){
+        return Whiteboard.builder().size("large").clean(true).build();
     }
 
     @Bean
-    public SoundSystem soundSystem() {
-        return SoundSystem.builder().type("Speakers").brand("Bose").build();
+    public Joplin joplin(){
+        return Joplin.builder().name("Joplin Note-taking App").version("2.8.8").notebook("IoC").build();
     }
+
 }

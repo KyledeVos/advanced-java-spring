@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 
-//@Component
+@Component
 @RequiredArgsConstructor
 public class CodingNomad {
     // automatically injected due to being private final
@@ -16,34 +16,34 @@ public class CodingNomad {
     // automatically injected due to being private final
     private final Framework framework;
 
-    // notice the SoundSystem is not private final - we'll need setter or field injection on this
-    private SoundSystem soundSystem;
+    //Lab - Field Injection
 
-    // setter injection of the SoundSystem
+    private final Whiteboard whiteboard;
+
+    private Joplin joplin;
+
+    //Lab - Setter Injection
     @Autowired
-    public void setSoundSystem(SoundSystem soundSystem) {
-        this.soundSystem = soundSystem;
+    public void setJoplin(Joplin joplin){
+        this.joplin = joplin;
     }
-
-    // field injection of the Operating System
-    @Autowired
-    OperatingSystem operatingSystem;
 
     public String createAwesomeSoftware() {
         return MessageFormat
                 .format("This coding nomad is creating awesome software using, " +
-                                "IDE: ({0}:{1}), JDK: ({2}:{3}), Framework: ({4}:{5}), " +
-                                "OS: ({6}:{7}), Sound System: ({8}:{9})",
+                                "IDE: ({0}:{1}), JDK: ({2}:{3}), Framework: ({4}:{5}), Whiteboard Size: ({6})" +
+                                " that is clean: ({7}), using ({8}:{9}) in Notebook: ({10}) ",
                         ide.getName(),
                         ide.getVersion(),
                         jdk.getName(),
                         jdk.getVersion(),
                         framework.getName(),
                         framework.getVersion(),
-                        operatingSystem.getName(),
-                        operatingSystem.getVersion(),
-                        soundSystem.getBrand(),
-                        soundSystem.getType()
+                        whiteboard.getSize(),
+                        whiteboard.isClean(),
+                        joplin.getName(),
+                        joplin.getVersion(),
+                        joplin.getNotebook()
                 );
     }
 }
