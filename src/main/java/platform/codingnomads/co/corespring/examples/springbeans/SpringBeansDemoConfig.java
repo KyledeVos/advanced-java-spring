@@ -11,4 +11,10 @@ public class SpringBeansDemoConfig {
     public Address address() {
         return new Address("Main Street", 1500);
     }
+
+    @Bean
+
+    public Car car(){
+        return new Car("honda", "civic");
+    }
 }
