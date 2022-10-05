@@ -11,6 +11,10 @@ public class AnnotationParsingDemo {
                     ModernInfo modernInfo = method.getAnnotation(ModernInfo.class);
                     System.out.println("Info Received: " + modernInfo.info());
                 }
+                if(method.isAnnotationPresent(ModernString.class)){
+                    ModernString modernString = method.getAnnotation(ModernString.class);
+                    System.out.println("Info Received: " + modernString.data());
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
