@@ -7,12 +7,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ToString
-public class DesktopComputer {
+public class LaptopComputer {
+
     @Autowired
-    @Qualifier("radeon")
+    @Qualifier("geforce")
     private VideoCard videoCard;
 
     @Autowired
-    @Qualifier("samsung")
+    @Qualifier("dell")
     private Monitor monitor;
 }
