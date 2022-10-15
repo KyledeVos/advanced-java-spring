@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class ApplicationEventListener {
     @EventListener(classes = {ContextStartedEvent.class})
     public void contextStartedEventListener() {
+
         System.out.println("Application started");
     }
 }
