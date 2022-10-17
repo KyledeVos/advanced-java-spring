@@ -9,6 +9,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class PrimaryAnnotationDemo {
     public static void main(String[] args) {
         final ConfigurableApplicationContext ctx = SpringApplication.run(PrimaryAnnotationDemo.class);
+        MediaPLayer mediaPLayer = ctx.getBean(MediaPLayer.class);
+        mediaPLayer.printMessage();
         ctx.close();
+
+
     }
 }
