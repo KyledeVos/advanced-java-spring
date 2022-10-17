@@ -16,6 +16,9 @@ public class ValueAnnotationDemo {
         nomad.getWorkingDays().forEach(System.out::println);
         System.out.println(nomad.getDatabaseValues());
         System.out.println(nomad.nomadIdentity());
+        System.out.println("\n Task \n");
+        System.out.println("My name is: ".concat(nomad.getMyName()).concat(", I live in ").
+                concat(nomad.getMyCountry()).concat(" and my goal is: ").concat(nomad.getMyGoal()));
         ctx.close();
     }
 }

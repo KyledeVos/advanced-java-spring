@@ -1,5 +1,6 @@
 package platform.codingnomads.co.corespring.examples.valueannotation;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@Getter
 public class Nomad {
 
     private String name;
@@ -35,6 +37,15 @@ public class Nomad {
 
     @Value("#{${database.values}}")
     private Map<String, String> databaseValues;
+
+    @Value("${myData.name}")
+    private String myName;
+
+    @Value("${myData.goal}")
+    private String myGoal;
+
+    @Value("${myData.country}")
+    private String myCountry;
 
     public String nomadIdentity() {
         return name.concat(" ").concat(age.toString());
