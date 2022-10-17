@@ -13,6 +13,12 @@ public class DependsOnDemoConfig {
         return new SpringDeveloper();
     }
 
+    @Bean
+    @DependsOn(value="jdk")
+    public SpellCheck spellCheck(){
+        return new SpellCheck();
+    }
+
     @Bean("jdk")
     public JDK jdk() {
         return new JDK();
