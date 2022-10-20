@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(SimpleConfiguration.class)
+@Import({SimpleConfiguration.class, TaskConfiguration.class})
 public class ImportAnnotationConfig {
     @Bean
     public Framework framework() {
