@@ -11,11 +11,18 @@ public class App {
     @Value("${app.version}")
     private String appVersion;
 
+    @Value("${app.releaseDate}")
+    private String appReleaseDate;
+
     public String getAppName() {
         return appName;
     }
 
     public String getAppVersion() {
         return appVersion;
+    }
+
+    public String getAppReleaseDate() {
+        return appReleaseDate;
     }
 }
