@@ -1,6 +1,7 @@
 package platform.codingnomads.co.springdata.example.ddl.onetoone.unidirectional;
 
 import lombok.*;
+import org.apache.ibatis.annotations.One;
 
 import javax.persistence.*;
 
@@ -20,4 +21,7 @@ public class Driver {
 
     @OneToOne
     private Car car;
+
+    @OneToOne(optional = false)
+    private F1Manager f1Manager;
 }
