@@ -13,6 +13,7 @@ public class IOCDemoConfiguration {
 
     @Bean
     public KyleGreetingProvider kyleProvider(){
+
         return new KyleGreetingProvider();
     }
 

@@ -9,6 +9,7 @@ public class StatusController {
     private final StatusService statusService;
 
     public StatusController(StatusService statusService) {
+
         this.statusService = statusService;
     }
 
@@ -19,6 +20,7 @@ public class StatusController {
 
     @GetMapping("/departure")
     public String sayGoodbye () {
+
         return statusService.processStatus(false);
     }
 

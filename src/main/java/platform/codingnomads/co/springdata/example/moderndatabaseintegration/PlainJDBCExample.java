@@ -10,10 +10,13 @@ public class PlainJDBCExample {
     public static void main(String[] args) {
         Connection DBConnection = null;
         Statement statement = null;
+
+        String URL = "jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            DBConnection = DriverManager.getConnection("URL", "username", "password");
+            DBConnection = DriverManager.getConnection("URL", "root", "darkLinux1000");
 
             statement = DBConnection.createStatement();
             String customQuery = "SELECT * FROM Employees";
@@ -47,7 +50,6 @@ public class PlainJDBCExample {
         }
     }
 }
-
 @Data
 @AllArgsConstructor
 class Employee {

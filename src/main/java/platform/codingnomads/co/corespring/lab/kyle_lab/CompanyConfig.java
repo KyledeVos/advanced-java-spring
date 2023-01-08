@@ -1,20 +1,18 @@
 package platform.codingnomads.co.corespring.lab.kyle_lab;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ComponentScan
 @ImportResource({"classpath*:xml-config/companyxml.xml"})
 public class CompanyConfig {
 
-    @Bean
+    @Bean("employee")
     public Employee employee(){
         return new Employee();
     }
 
-    @Bean
+    @Bean("manager")
     public Manager manager(){
         return new Manager();
     }

@@ -7,7 +7,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
 public class Manager {
 

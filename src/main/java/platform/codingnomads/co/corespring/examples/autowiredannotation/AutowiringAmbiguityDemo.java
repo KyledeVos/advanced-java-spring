@@ -17,6 +17,7 @@ public class AutowiringAmbiguityDemo {
     LaptopComputer laptopComputer;
 
     public static void main(String[] args) {
+
         SpringApplication.run(AutowiringAmbiguityDemo.class);
     }
 
