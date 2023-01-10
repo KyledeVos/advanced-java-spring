@@ -1,6 +1,7 @@
 package platform.codingnomads.co.springdata.example.ddl.onetoone.bidirectional;
 
 import lombok.*;
+import org.apache.ibatis.annotations.One;
 
 import javax.persistence.*;
 
@@ -28,4 +29,7 @@ public class Car {
             mappedBy = "car"
     )
     private Driver driver;
+
+    @OneToOne
+    private PitCrew pitCrew;
 }
