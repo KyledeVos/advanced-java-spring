@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.*;
 
+import java.util.AbstractList;
+import java.util.Iterator;
 import java.util.List;
 
 @SpringBootApplication
@@ -24,14 +26,43 @@ public class JpaRepoDemo implements CommandLineRunner {
         SoftDrink coke = SoftDrink.builder().name("Coca-Cola").rating(4).build();
         SoftDrink drPepper = SoftDrink.builder().name("Dr. Pepper").rating(1).build();
 
+        //***************************************************************************
+        //Task - Add Entries
+        SoftDrink sprite = SoftDrink.builder().name("Sprite").rating(4).build();
+        SoftDrink pepsi = SoftDrink.builder().name("Pepsi").rating(6).build();
+        SoftDrink mirinda = SoftDrink.builder().name("Mirinda").rating(10).build();
+        //***************************************************************************
+
         //save single entity instance
         fanta = softDrinkRepo.save(fanta);
 
         //save multiple entity instances at a time
-        List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper));
+        List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper, pepsi, sprite, mirinda));
 
         //make sure all entities are actually saved to the database
         softDrinkRepo.flush();
+
+        //***************************************************************************
+        //TASK - Find
+        System.out.println("***TASK - Find***");
+        System.out.println("SoftDrink with id 3:");
+        softDrinkRepo.findAll(
+                Example.of(
+                        SoftDrink.builder().id(3l).build(),
+                        ExampleMatcher.matchingAny()
+                )
+        ).forEach(softdrink-> System.out.println(softdrink));
+
+        //TASK - Update
+        //update name of Pepsi to Pepsi Max
+
+        for(SoftDrink softDrink: insertedSoftDrinks) {
+            if (softDrink.getName().equalsIgnoreCase("pepsi")) {
+                softDrink.setName("Pepsi Max");
+                softDrinkRepo.save(softDrink);
+            }
+        }
+        //***************************************************************************
 
         //update coke and drPepper to have rating 0 in the database
         for (SoftDrink sd : insertedSoftDrinks) {
@@ -66,6 +97,16 @@ public class JpaRepoDemo implements CommandLineRunner {
         //get second page
         page = softDrinkRepo.findAll(pageRequest.next());
         page.getContent().forEach(System.out::println);
+
+        //***************************************************************************
+        //TASK - Delete
+        softDrinkRepo.findAll().forEach(x->{
+            if(x.getId()>3){
+                softDrinkRepo.delete(x);
+            }
+        });
+
+        //***************************************************************************
 
         //delete all 3 soft drinks in a batch
         softDrinkRepo.deleteAllInBatch();
