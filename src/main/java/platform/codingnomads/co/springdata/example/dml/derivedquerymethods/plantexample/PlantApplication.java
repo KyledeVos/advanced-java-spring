@@ -69,6 +69,6 @@ public class PlantApplication implements CommandLineRunner {
         Plant plant4 = plantRepo.findFirstByFavoriteSoilType_dryIsTrue();
         System.out.println(plant4.toString());
 
-        plantRepo.deleteAll();
+        //plantRepo.deleteAll();
     }
 }
