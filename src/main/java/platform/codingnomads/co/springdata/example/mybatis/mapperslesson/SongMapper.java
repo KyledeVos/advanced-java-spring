@@ -50,4 +50,19 @@ public interface SongMapper {
             "WHERE artist_name = #{artistName} AND album_name = #{albumName};")
     void deleteSongsByAlbumAndArtist(String artistName, String albumName);
 
+    //TASK
+
+    //add two songs
+    @Insert("INSERT INTO mybatis.songs "+
+            "(name, artist_name, album_name, song_length) " +
+            "VALUES(#{first.name}, #{first.artist_name}, #{first.album_name}, #{first.song_length}), " +
+            "(#{second.name}, #{second.artist_name}, #{second.album_name}, #{second.song_length})")
+    @Options(useGeneratedKeys = true, keyColumn = "first.id, second.id", keyProperty = "first.id, second.id")
+    void insertTwoSongs(Song first, Song second);
+
+    //update just the name of a song
+    @Update("UPDATE mybatis.songs SET name=#{name} WHERE id=#{id}")
+    int updateSongNameById(String name, int id);
+
+
 }

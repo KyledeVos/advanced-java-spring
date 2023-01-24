@@ -1,12 +1,12 @@
 package platform.codingnomads.co.springdata.example.mybatis.mapperslesson;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @ToString
+@Builder
+@AllArgsConstructor
 public class Song {
 
     private Long id;
